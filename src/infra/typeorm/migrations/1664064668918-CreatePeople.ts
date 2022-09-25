@@ -52,6 +52,7 @@ export class CreatePeople1664064668918 implements MigrationInterface {
             name: 'complement',
             type: 'varchar',
             length: '250',
+            isNullable: true,
           },
           {
             name: 'user_id',

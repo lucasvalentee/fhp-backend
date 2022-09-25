@@ -10,7 +10,7 @@ interface ICreatePeopleDTO {
   city_id: number;
   district: string;
   address: string;
-  complement: string;
+  complement?: string;
   user_id: string;
 }
 

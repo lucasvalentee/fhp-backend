@@ -38,7 +38,7 @@ class Person {
   @Column()
   address: string;
 
-  @Column()
+  @Column({ nullable: true })
   complement: string;
 
   @Column()
