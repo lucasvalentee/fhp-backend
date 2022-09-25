@@ -27,8 +27,6 @@ class CreatePersonUseCase {
   }: ICreatePeopleDTO): Promise<void> {
     const userEmailAlreadyExists = await this.peopleRepository.findByCpf(cpf);
 
-    console.log(userEmailAlreadyExists);
-
     if (userEmailAlreadyExists) {
       throw new AppError('Person already exists.');
     }
