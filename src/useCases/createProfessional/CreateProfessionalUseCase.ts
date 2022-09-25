@@ -12,7 +12,7 @@ class CreateProfessionalUseCase {
     private professionalsRepository: IProfessionalsRepository,
   ) {}
 
-  async execute({ person_cpf }: ICreateProfessionalDTO) {
+  async execute({ person_cpf }: ICreateProfessionalDTO): Promise<void> {
     const professional = await this.professionalsRepository.findByCpf(
       person_cpf,
     );
