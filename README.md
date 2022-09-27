@@ -1,6 +1,6 @@
-# Backend of a car rental API
+# Backend of FHP project
 
-An API created during Rocketseat's Ignite Node.js course. I used this to learn more about backend, SOLID, docker and git.
+Coming soon. . .
 
 ## Author
 
