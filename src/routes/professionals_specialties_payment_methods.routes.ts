@@ -1,0 +1,23 @@
+import { Router } from 'express';
+import CreateProfessionalSpecialtyPaymentMethodController from 'useCases/createProfessionalSpecialtyPaymentMethod/CreateProfessionalSpecialtyPaymentMethodController';
+import FindProfessionalsSpecialtiesPaymentMethodByCpfAndSpecialtyController from 'useCases/findProfessionalsSpecialtiesPaymentMethodByCpfAndSpecialty/FindProfessionalsSpecialtiesPaymentMethodByCpfAndSpecialtyController';
+
+const professionalsSpecialtiesPaymentMethodsRoutes = Router();
+
+const createProfessionalSpecialtyPaymentMethodController =
+  new CreateProfessionalSpecialtyPaymentMethodController();
+
+const findProfessionalsSpecialtiesPaymentMethodByCpfAndSpecialtyController =
+  new FindProfessionalsSpecialtiesPaymentMethodByCpfAndSpecialtyController();
+
+professionalsSpecialtiesPaymentMethodsRoutes.post(
+  '/',
+  createProfessionalSpecialtyPaymentMethodController.handle,
+);
+
+professionalsSpecialtiesPaymentMethodsRoutes.get(
+  '/:personCpf/:specialtyId',
+  findProfessionalsSpecialtiesPaymentMethodByCpfAndSpecialtyController.handle,
+);
+
+export default professionalsSpecialtiesPaymentMethodsRoutes;
