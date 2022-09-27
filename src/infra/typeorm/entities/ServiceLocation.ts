@@ -3,45 +3,50 @@ import {
   CreateDateColumn,
   Entity,
   IsNull,
+  OneToMany,
   PrimaryColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
+import ProfessionalSpecialty from './ProfessionalSpecialty';
 
 @Entity('service_locations')
 class ServiceLocation {
   @PrimaryColumn()
   id: string;
 
-  @Column()
-  country_state_id: number;
+  @Column({ name: 'country_state_id' })
+  countryStateId: number;
 
-  @Column()
-  zip_code: string;
+  @Column({ name: 'zip_code' })
+  zipCode: string;
 
-  @Column()
-  city_id: number;
+  @Column({ name: 'city_id' })
+  cityId: number;
 
-  @Column()
+  @Column({ name: 'district' })
   district: string;
 
-  @Column()
+  @Column({ name: 'address' })
   address: string;
 
   @Column({ nullable: true })
   complement: string;
 
-  @Column()
-  phone_number: string;
+  @Column({ name: 'phone_number' })
+  phoneNumber: string;
 
-  @Column()
-  medical_insurance: string;
+  @Column({ name: 'medical_insurance' })
+  medicalInsurance: string;
 
-  @CreateDateColumn()
-  created_at: Date;
+  @CreateDateColumn({ name: 'created_at' })
+  createdAt: Date;
 
-  @UpdateDateColumn()
-  updated_at: Date;
+  @UpdateDateColumn({ name: 'updated_at' })
+  updatedAt: Date;
+
+  @OneToMany(() => ProfessionalSpecialty, () => ServiceLocation)
+  professionalsSpecialties: ProfessionalSpecialty[];
 
   constructor() {
     if (!this.id) {

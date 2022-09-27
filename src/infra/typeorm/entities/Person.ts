@@ -7,6 +7,7 @@ import {
   PrimaryColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import Professional from './Professional';
 import User from './User';
 
 @Entity('people')
@@ -20,17 +21,17 @@ class Person {
   @Column()
   email: string;
 
-  @Column()
-  phone_number: string;
+  @Column({ name: 'phone_number' })
+  phoneNumber: string;
 
-  @Column()
-  country_state_id: number;
+  @Column({ name: 'country_state_id' })
+  countryStateId: number;
 
-  @Column()
-  zip_code: string;
+  @Column({ name: 'zip_code' })
+  zipCode: string;
 
-  @Column()
-  city_id: number;
+  @Column({ name: 'city_id' })
+  cityId: number;
 
   @Column()
   district: string;
@@ -41,18 +42,22 @@ class Person {
   @Column({ nullable: true })
   complement: string;
 
-  @Column()
-  user_id: string;
+  @Column({ name: 'user_id' })
+  userId: string;
 
-  @CreateDateColumn()
-  created_at: Date;
+  @CreateDateColumn({ name: 'created_at' })
+  createdAt: Date;
 
-  @UpdateDateColumn()
-  updated_at: Date;
+  @UpdateDateColumn({ name: 'updated_at' })
+  updatedAt: Date;
 
   @OneToOne(() => User)
   @JoinColumn({ name: 'user_id' })
   user: User;
+
+  @OneToOne(() => Professional, { eager: true })
+  @JoinColumn({ name: 'cpf', referencedColumnName: 'personCpf' })
+  professional: Professional;
 }
 
 export default Person;

@@ -12,11 +12,11 @@ class User {
   @Column()
   password: string;
 
-  @Column({ default: false })
-  is_admin: boolean;
+  @Column({ name: 'is_admin', default: false })
+  isAdmin: boolean;
 
-  @CreateDateColumn()
-  created_at: Date;
+  @CreateDateColumn({ name: 'created_at' })
+  createdAt: Date;
 
   constructor() {
     if (!this.id) {
