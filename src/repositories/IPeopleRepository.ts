@@ -1,17 +1,19 @@
 import Person from 'infra/typeorm/entities/Person';
+import User from 'infra/typeorm/entities/User';
 
 interface ICreatePeopleDTO {
   cpf: string;
   name: string;
   email: string;
-  phone_number: string;
-  country_state_id: number;
-  zip_code: string;
-  city_id: number;
+  phoneNumber: string;
+  countryStateId: number;
+  zipCode: string;
+  cityId: number;
   district: string;
   address: string;
   complement?: string;
-  user_id: string;
+  userId: string;
+  user: User;
 }
 
 interface IPeopleRepository {
@@ -19,14 +21,15 @@ interface IPeopleRepository {
     cpf,
     name,
     email,
-    phone_number,
-    country_state_id,
-    zip_code,
-    city_id,
+    phoneNumber,
+    countryStateId,
+    zipCode,
+    cityId,
     district,
     address,
     complement,
-    user_id,
+    userId,
+    user,
   }: ICreatePeopleDTO): Promise<void>;
 
   findByCpf(cpf: string): Promise<Person>;

@@ -17,33 +17,27 @@ class ServiceLocationsRepository implements IServiceLocationsRepository {
   }
 
   async create({
-    country_state_id,
-    zip_code,
-    city_id,
+    countryStateId,
+    zipCode,
+    cityId,
     district,
     address,
     complement,
-    phone_number,
-    medical_insurance,
+    phoneNumber,
+    medicalInsurance,
   }: ICreateServiceLocationDTO): Promise<ServiceLocation> {
     const serviceLocation = this.repository.create({
-      country_state_id,
-      zip_code,
-      city_id,
+      countryStateId,
+      zipCode,
+      cityId,
       district,
       address,
       complement,
-      phone_number,
-      medical_insurance,
+      phoneNumber,
+      medicalInsurance,
     });
 
-    console.log(serviceLocation);
-
-    const t = await this.repository.save(serviceLocation);
-
-    console.log(t);
-
-    return t;
+    return await this.repository.save(serviceLocation);
   }
 }
 

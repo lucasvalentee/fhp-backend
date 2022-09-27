@@ -1,25 +1,26 @@
 import ProfessionalSpecialty from 'infra/typeorm/entities/ProfessionalSpecialty';
+import ProfessionalSpecialtyServiceLocation from 'infra/typeorm/entities/ProfessionalSpecialtyServiceLocation';
 
 interface ICreateProfessionalSpecialtyDTO {
-  person_cpf: string;
-  professional_id: string;
-  specialty_id: string;
-  register_number: string;
-  class_entity: string;
+  personCpf: string;
+  professionalId: string;
+  specialtyId: string;
+  registerNumber: string;
+  classEntity: string;
 }
 
 interface IProfessionalsSpecialtiesRepository {
   create({
-    person_cpf,
-    professional_id,
-    specialty_id,
-    register_number,
-    class_entity,
+    personCpf,
+    professionalId,
+    specialtyId,
+    registerNumber,
+    classEntity,
   }: ICreateProfessionalSpecialtyDTO): Promise<void>;
 
-  findByCpf(person_cpf: string): Promise<ProfessionalSpecialty[]>;
+  findByCpf(personCpf: string): Promise<ProfessionalSpecialty[]>;
 
-  findBySpecialtyId(specialty_id: string): Promise<ProfessionalSpecialty[]>;
+  findBySpecialtyId(specialtyId: string): Promise<ProfessionalSpecialty[]>;
 }
 
 export { IProfessionalsSpecialtiesRepository, ICreateProfessionalSpecialtyDTO };

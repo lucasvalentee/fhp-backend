@@ -14,17 +14,18 @@ class ProfessionalsRepository implements IProfessionalsRepository {
       DatabaseConfiguration.getDataSourceInstance().getRepository(Professional);
   }
 
-  async create({ person_cpf }: ICreateProfessionalDTO): Promise<void> {
+  async create({ personCpf }: ICreateProfessionalDTO): Promise<void> {
     const professional = this.repository.create({
-      person_cpf,
+      personCpf,
     });
 
     await this.repository.save(professional);
   }
 
-  async findByCpf(person_cpf: string): Promise<Professional> {
+  async findByCpf(personCpf: string): Promise<Professional> {
     const professional = await this.repository.findOne({
-      where: { person_cpf },
+      where: { personCpf },
+      relations: ['person'],
     });
 
     return professional;

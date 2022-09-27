@@ -19,36 +19,39 @@ class ProfessionalsSpecialtiesRepository
   }
 
   async create({
-    person_cpf,
-    professional_id,
-    specialty_id,
-    register_number,
-    class_entity,
+    personCpf,
+    professionalId,
+    specialtyId,
+    registerNumber,
+    classEntity,
   }: ICreateProfessionalSpecialtyDTO): Promise<void> {
     const professionalSpecialty = this.repository.create({
-      person_cpf,
-      professional_id,
-      specialty_id,
-      register_number,
-      class_entity,
+      personCpf,
+      professionalId,
+      specialtyId,
+      registerNumber,
+      classEntity,
     });
 
     await this.repository.save(professionalSpecialty);
   }
 
-  async findByCpf(person_cpf: string): Promise<ProfessionalSpecialty[]> {
+  async findByCpf(personCpf: string): Promise<ProfessionalSpecialty[]> {
     const professionalsSpecialties = await this.repository.findBy({
-      person_cpf,
+      personCpf,
     });
 
     return professionalsSpecialties;
   }
 
   async findBySpecialtyId(
-    specialty_id: string,
+    specialtyId: string,
   ): Promise<ProfessionalSpecialty[]> {
-    const professionalsSpecialties = await this.repository.findBy({
-      specialty_id,
+    const professionalsSpecialties = await this.repository.find({
+      where: {
+        specialtyId,
+      },
+      relations: ['specialty', 'professionalsSpecialtiesServiceLocations'],
     });
 
     return professionalsSpecialties;
