@@ -2,6 +2,7 @@ import PaymentMethodsRepository from 'infra/typeorm/repositories/PaymentMethodsR
 import PeopleRepository from 'infra/typeorm/repositories/PeopleRepository';
 import ProfessionalsRepository from 'infra/typeorm/repositories/ProfessionalsRepository';
 import ProfessionalsSpecialtiesRepository from 'infra/typeorm/repositories/ProfessionalsSpecialtiesRepository';
+import ProfessionalsSpecialtiesServiceLocationsRepository from 'infra/typeorm/repositories/ProfessionalsSpecialtiesServiceLocationsRepository';
 import ServiceLocationsRepository from 'infra/typeorm/repositories/ServiceLocationsRepository';
 import SpecialtiesRepository from 'infra/typeorm/repositories/SpecialtiesRepository';
 import UsersRepository from 'infra/typeorm/repositories/UsersRepository';
@@ -9,6 +10,7 @@ import { IPaymentMethodsRepository } from 'repositories/IPaymentMethodsRepositor
 import { IPeopleRepository } from 'repositories/IPeopleRepository';
 import { IProfessionalsRepository } from 'repositories/IProfessionalsRepository';
 import { IProfessionalsSpecialtiesRepository } from 'repositories/IProfessionalsSpecialtiesRepository';
+import { IProfessionalsSpecialtiesServiceLocationsRepository } from 'repositories/IProfessionalsSpecialtiesServiceLocationsRepository';
 import { IServiceLocationsRepository } from 'repositories/IServiceLocationsRepository';
 import { ISpecialtiesRepository } from 'repositories/ISpecialtiesRepository';
 import { IUsersRepository } from 'repositories/IUsersRepository';
@@ -47,4 +49,9 @@ container.registerSingleton<IServiceLocationsRepository>(
 container.registerSingleton<IProfessionalsSpecialtiesRepository>(
   'ProfessionalsSpecialtiesRepository',
   ProfessionalsSpecialtiesRepository,
+);
+
+container.registerSingleton<IProfessionalsSpecialtiesServiceLocationsRepository>(
+  'ProfessionalsSpecialtiesServiceLocationsRepository',
+  ProfessionalsSpecialtiesServiceLocationsRepository,
 );
