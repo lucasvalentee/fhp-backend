@@ -4,7 +4,7 @@ import FindProfessionalsSpecialtiesBySpecialtyIdUseCase from './FindProfessional
 
 class FindProfessionalsSpecialtiesBySpecialtyIdController {
   async handle(request: Request, response: Response): Promise<Response> {
-    const { specialty_id } = request.body;
+    const { specialtyId } = request.params;
 
     const findProfessionalsSpecialtiesBySpecialtyIdUseCase = container.resolve(
       FindProfessionalsSpecialtiesBySpecialtyIdUseCase,
@@ -12,7 +12,7 @@ class FindProfessionalsSpecialtiesBySpecialtyIdController {
 
     const professionalsSpecialties =
       await findProfessionalsSpecialtiesBySpecialtyIdUseCase.execute(
-        specialty_id,
+        specialtyId,
       );
 
     return response.json(professionalsSpecialties);

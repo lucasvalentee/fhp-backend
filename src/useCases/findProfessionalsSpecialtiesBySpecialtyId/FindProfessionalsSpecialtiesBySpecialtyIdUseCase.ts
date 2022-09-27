@@ -9,9 +9,11 @@ class FindProfessionalsSpecialtiesBySpecialtyIdUseCase {
     private professionalsSpecialtiesRepository: IProfessionalsSpecialtiesRepository,
   ) {}
 
-  async execute(specialty_id: string): Promise<ProfessionalSpecialty[]> {
+  async execute(specialtyId: string): Promise<ProfessionalSpecialty[]> {
     const professionalsSpecialties =
-      await this.professionalsSpecialtiesRepository.findByCpf(specialty_id);
+      await this.professionalsSpecialtiesRepository.findBySpecialtyId(
+        specialtyId,
+      );
 
     return professionalsSpecialties;
   }

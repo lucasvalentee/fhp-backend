@@ -8,14 +8,15 @@ class CreatePersonController {
       cpf,
       name,
       email,
-      phone_number,
-      country_state_id,
-      zip_code,
-      city_id,
+      phoneNumber,
+      countryStateId,
+      zipCode,
+      cityId,
       district,
       address,
       complement,
-      user_id,
+      userId,
+      user,
     } = request.body;
 
     const createPersonUseCase = container.resolve(CreatePersonUseCase);
@@ -24,14 +25,15 @@ class CreatePersonController {
       cpf,
       name,
       email,
-      phone_number,
-      country_state_id,
-      zip_code,
-      city_id,
+      phoneNumber,
+      countryStateId,
+      zipCode,
+      cityId,
       district,
       address,
       complement,
-      user_id,
+      userId,
+      user,
     });
 
     return response.status(201).send();

@@ -13,35 +13,24 @@ class CreateServiceLocationUseCase {
   ) {}
 
   async execute({
-    country_state_id,
-    zip_code,
-    city_id,
+    countryStateId,
+    zipCode,
+    cityId,
     district,
     address,
     complement,
-    phone_number,
-    medical_insurance,
+    phoneNumber,
+    medicalInsurance,
   }: ICreateServiceLocationDTO): Promise<ServiceLocation> {
-    console.log({
-      country_state_id,
-      zip_code,
-      city_id,
-      district,
-      address,
-      complement,
-      phone_number,
-      medical_insurance,
-    });
-
     const serviceLocation = await this.serviceLocationsRepository.create({
-      country_state_id,
-      zip_code,
-      city_id,
+      countryStateId,
+      zipCode,
+      cityId,
       district,
       address,
       complement,
-      phone_number,
-      medical_insurance,
+      phoneNumber,
+      medicalInsurance,
     });
 
     return serviceLocation;

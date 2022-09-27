@@ -9,9 +9,9 @@ class FindProfessionalsSpecialtiesByCpfUseCase {
     private professionalsSpecialtiesRepository: IProfessionalsSpecialtiesRepository,
   ) {}
 
-  async execute(person_cpf: string): Promise<ProfessionalSpecialty[]> {
+  async execute(personCpf: string): Promise<ProfessionalSpecialty[]> {
     const professionalsSpecialties =
-      await this.professionalsSpecialtiesRepository.findByCpf(person_cpf);
+      await this.professionalsSpecialtiesRepository.findByCpf(personCpf);
 
     return professionalsSpecialties;
   }

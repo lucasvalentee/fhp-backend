@@ -12,18 +12,18 @@ class CreateProfessionalSpecialtyUseCase {
   ) {}
 
   async execute({
-    person_cpf,
-    professional_id,
-    specialty_id,
-    register_number,
-    class_entity,
+    personCpf,
+    professionalId,
+    specialtyId,
+    registerNumber,
+    classEntity,
   }: ICreateProfessionalSpecialtyDTO): Promise<void> {
     await this.professionalsSpecialtiesRepository.create({
-      person_cpf,
-      professional_id,
-      specialty_id,
-      register_number,
-      class_entity,
+      personCpf,
+      professionalId,
+      specialtyId,
+      registerNumber,
+      classEntity,
     });
   }
 }

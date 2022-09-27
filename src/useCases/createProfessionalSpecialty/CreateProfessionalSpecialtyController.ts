@@ -5,11 +5,11 @@ import CreateProfessionalSpecialtyUseCase from './CreateProfessionalSpecialtyUse
 class CreateProfessionalSpecialtyController {
   async handle(request: Request, response: Response): Promise<Response> {
     const {
-      person_cpf,
-      professional_id,
-      specialty_id,
-      register_number,
-      class_entity,
+      personCpf,
+      professionalId,
+      specialtyId,
+      registerNumber,
+      classEntity,
     } = request.body;
 
     const createProfessionalSpecialtyUseCase = container.resolve(
@@ -17,11 +17,11 @@ class CreateProfessionalSpecialtyController {
     );
 
     await createProfessionalSpecialtyUseCase.execute({
-      person_cpf,
-      professional_id,
-      specialty_id,
-      register_number,
-      class_entity,
+      personCpf,
+      professionalId,
+      specialtyId,
+      registerNumber,
+      classEntity,
     });
 
     return response.status(201).send();

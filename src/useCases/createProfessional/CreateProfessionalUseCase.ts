@@ -12,9 +12,9 @@ class CreateProfessionalUseCase {
     private professionalsRepository: IProfessionalsRepository,
   ) {}
 
-  async execute({ person_cpf }: ICreateProfessionalDTO): Promise<void> {
+  async execute({ personCpf }: ICreateProfessionalDTO): Promise<void> {
     const professional = await this.professionalsRepository.findByCpf(
-      person_cpf,
+      personCpf,
     );
 
     if (professional) {
@@ -22,7 +22,7 @@ class CreateProfessionalUseCase {
     }
 
     await this.professionalsRepository.create({
-      person_cpf,
+      personCpf,
     });
   }
 }
