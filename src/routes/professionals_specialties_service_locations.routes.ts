@@ -1,0 +1,23 @@
+import { Router } from 'express';
+import CreateProfessionalSpecialtyServiceLocationController from 'useCases/createProfessionalSpecialtyServiceLocation/CreateProfessionalSpecialtyServiceLocationController';
+import FindProfessionalsSpecialtiesServiceLocationsByCpfAndSpecialtyController from 'useCases/findProfessionalsSpecialtiesServiceLocationsByCpfAndSpecialty/FindProfessionalsSpecialtiesServiceLocationsByCpfAndSpecialtyController';
+
+const professionalsSpecialtiesServiceLocationsRoutes = Router();
+
+const createProfessionalSpecialtyServiceLocation =
+  new CreateProfessionalSpecialtyServiceLocationController();
+
+const findProfessionalsSpecialtiesServiceLocationsByCpfAndSpecialtyController =
+  new FindProfessionalsSpecialtiesServiceLocationsByCpfAndSpecialtyController();
+
+professionalsSpecialtiesServiceLocationsRoutes.post(
+  '/',
+  createProfessionalSpecialtyServiceLocation.handle,
+);
+
+professionalsSpecialtiesServiceLocationsRoutes.get(
+  '/:personCpf/:specialtyId',
+  findProfessionalsSpecialtiesServiceLocationsByCpfAndSpecialtyController.handle,
+);
+
+export default professionalsSpecialtiesServiceLocationsRoutes;
