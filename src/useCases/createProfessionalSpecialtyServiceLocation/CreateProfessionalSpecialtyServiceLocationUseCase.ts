@@ -48,7 +48,7 @@ class CreateProfessionalSpecialtyServiceLocationUseCase {
 
         if (isServiceLocationDuplicated) {
           throw new AppError(
-            'The service location already exists for that specialty.',
+            'The service location already exists for this specialty.',
           );
         }
       },
