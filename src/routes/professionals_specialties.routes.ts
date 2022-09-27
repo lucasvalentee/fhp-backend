@@ -23,7 +23,7 @@ professionalsSpecialtiesRoutes.get(
 );
 
 professionalsSpecialtiesRoutes.get(
-  '/findBySpecialty/:specialty_id',
+  '/findBySpecialty/:specialtyId',
   findProfessionalsSpecialtiesBySpecialtyIdController.handle,
 );
 
