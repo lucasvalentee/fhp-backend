@@ -5,6 +5,7 @@ import '@shared/container';
 
 import express from 'express';
 import router from 'routes';
+import cors from 'cors';
 
 import { catchError } from '@middlewares/catchError';
 import { DatabaseConfiguration } from './database';
@@ -12,6 +13,8 @@ import { DatabaseConfiguration } from './database';
 DatabaseConfiguration.startConnection();
 
 const app = express();
+
+app.use(cors());
 
 app.use(express.json());
 
