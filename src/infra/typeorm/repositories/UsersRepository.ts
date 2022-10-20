@@ -26,7 +26,7 @@ class UsersRepository implements IUsersRepository {
     await this.repository.save(user);
   }
 
-  async createSession(user: User): Promise<ISession> {
+  async createSession(user: User, personCpf?: string): Promise<ISession> {
     const { secret, expiresIn } = authConfig.jwt;
 
     const token = sign({}, secret, {
@@ -42,6 +42,7 @@ class UsersRepository implements IUsersRepository {
     return {
       user,
       token,
+      personCpf,
     };
   }
 

@@ -6,12 +6,15 @@ import {
 } from 'repositories/IUsersRepository';
 import { AppError } from '@errors/AppError';
 import { compare } from 'bcrypt';
+import { IPeopleRepository } from 'repositories/IPeopleRepository';
 
 @injectable()
 class CreateSessionUseCase {
   constructor(
     @inject('UsersRepository')
     private usersRepository: IUsersRepository,
+    @inject('PeopleRepository')
+    private peopleRepository: IPeopleRepository,
   ) {}
 
   async execute({ username, password }: ICreateUserDTO): Promise<ISession> {
@@ -27,7 +30,9 @@ class CreateSessionUseCase {
       throw new AppError('Incorrect username/password combination.', 401);
     }
 
-    return await this.usersRepository.createSession(user);
+    const person = await this.peopleRepository.findByUserId(user.id);
+
+    return await this.usersRepository.createSession(user, person?.cpf);
   }
 }
 
