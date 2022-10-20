@@ -34,6 +34,8 @@ interface IPeopleRepository {
 
   findByCpf(cpf: string): Promise<Person>;
 
+  findByUserId(userId: string): Promise<Person>;
+
   list(): Promise<Person[]>;
 }
 
