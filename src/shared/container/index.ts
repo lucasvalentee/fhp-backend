@@ -1,3 +1,5 @@
+import CitiesRepository from 'infra/typeorm/repositories/CitiesRepository';
+import CountryStatesRepository from 'infra/typeorm/repositories/CountryStatesRepository';
 import PaymentMethodsRepository from 'infra/typeorm/repositories/PaymentMethodsRepository';
 import PeopleRepository from 'infra/typeorm/repositories/PeopleRepository';
 import ProfessionalsRepository from 'infra/typeorm/repositories/ProfessionalsRepository';
@@ -7,6 +9,8 @@ import ProfessionalsSpecialtiesServiceLocationsRepository from 'infra/typeorm/re
 import ServiceLocationsRepository from 'infra/typeorm/repositories/ServiceLocationsRepository';
 import SpecialtiesRepository from 'infra/typeorm/repositories/SpecialtiesRepository';
 import UsersRepository from 'infra/typeorm/repositories/UsersRepository';
+import { ICitiesRepository } from 'repositories/ICitiesRepository';
+import { ICountryStatesRepository } from 'repositories/ICountryStatesRepository';
 import { IPaymentMethodsRepository } from 'repositories/IPaymentMethodsRepository';
 import { IPeopleRepository } from 'repositories/IPeopleRepository';
 import { IProfessionalsRepository } from 'repositories/IProfessionalsRepository';
@@ -61,4 +65,14 @@ container.registerSingleton<IProfessionalsSpecialtiesServiceLocationsRepository>
 container.registerSingleton<IProfessionalsSpecialtiesPaymentMethodsRepository>(
   'ProfessionalsSpecialtiesPaymentMethodsRepository',
   ProfessionalsSpecialtiesPaymentMethodsRepository,
+);
+
+container.registerSingleton<ICountryStatesRepository>(
+  'CountryStatesRepository',
+  CountryStatesRepository,
+);
+
+container.registerSingleton<ICitiesRepository>(
+  'CitiesRepository',
+  CitiesRepository,
 );
