@@ -1,4 +1,6 @@
 import { Router } from 'express';
+import citiesRoutes from './cities.routes';
+import countryStatesRoutes from './country_states.routes';
 import paymentMethodsRoutes from './payment_methods.routes';
 import peopleRoutes from './people.routes';
 import professionalsRoutes from './professionals.routes';
@@ -28,5 +30,7 @@ router.use(
   professionalsSpecialtiesPaymentMethodsRoutes,
 );
 router.use('/sessions', sessionsRoutes);
+router.use('/countryStates', countryStatesRoutes);
+router.use('/cities', citiesRoutes);
 
 export default router;
