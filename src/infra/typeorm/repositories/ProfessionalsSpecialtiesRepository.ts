@@ -1,6 +1,7 @@
 import DatabaseConfiguration from '@database/DatabaseConfiguration';
 import {
   ICreateProfessionalSpecialtyDTO,
+  IDeleteProfessionalSpecialtyDTO,
   IProfessionalsSpecialtiesRepository,
 } from 'repositories/IProfessionalsSpecialtiesRepository';
 import { Repository } from 'typeorm';
@@ -36,9 +37,22 @@ class ProfessionalsSpecialtiesRepository
     await this.repository.save(professionalSpecialty);
   }
 
+  async delete({
+    professionalId,
+    specialtyId,
+  }: IDeleteProfessionalSpecialtyDTO): Promise<boolean> {
+    const response = await this.repository.delete({
+      professionalId,
+      specialtyId,
+    });
+
+    return !!response.affected;
+  }
+
   async findByCpf(personCpf: string): Promise<ProfessionalSpecialty[]> {
-    const professionalsSpecialties = await this.repository.findBy({
-      personCpf,
+    const professionalsSpecialties = await this.repository.find({
+      where: { personCpf },
+      order: { createdAt: 'ASC' },
     });
 
     return professionalsSpecialties;

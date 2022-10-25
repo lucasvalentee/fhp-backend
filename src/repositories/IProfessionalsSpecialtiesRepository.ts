@@ -9,6 +9,11 @@ interface ICreateProfessionalSpecialtyDTO {
   classEntity: string;
 }
 
+interface IDeleteProfessionalSpecialtyDTO {
+  professionalId: string;
+  specialtyId: string;
+}
+
 interface IProfessionalsSpecialtiesRepository {
   create({
     personCpf,
@@ -18,9 +23,18 @@ interface IProfessionalsSpecialtiesRepository {
     classEntity,
   }: ICreateProfessionalSpecialtyDTO): Promise<void>;
 
+  delete({
+    professionalId,
+    specialtyId,
+  }: IDeleteProfessionalSpecialtyDTO): Promise<boolean>;
+
   findByCpf(personCpf: string): Promise<ProfessionalSpecialty[]>;
 
   findBySpecialtyId(specialtyId: string): Promise<ProfessionalSpecialty[]>;
 }
 
-export { IProfessionalsSpecialtiesRepository, ICreateProfessionalSpecialtyDTO };
+export {
+  IProfessionalsSpecialtiesRepository,
+  ICreateProfessionalSpecialtyDTO,
+  IDeleteProfessionalSpecialtyDTO,
+};

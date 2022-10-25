@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import CreateProfessionalSpecialtyController from 'useCases/createProfessionalSpecialty/CreateProfessionalSpecialtyController';
+import DeleteProfessionalSpecialtyController from 'useCases/deleteProfessionalSpecialty/DeleteProfessionalSpecialtyController';
 import FindProfessionalsSpecialtiesByCpfController from 'useCases/findProfessionalsSpecialtiesByCpf/FindProfessionalsSpecialtiesByCpfController';
 import FindProfessionalsSpecialtiesBySpecialtyIdController from 'useCases/findProfessionalsSpecialtiesBySpecialtyId/FindProfessionalsSpecialtiesBySpecialtyIdController';
 
@@ -11,6 +12,8 @@ const findProfessionalsSpecialtiesByCpfController =
   new FindProfessionalsSpecialtiesByCpfController();
 const findProfessionalsSpecialtiesBySpecialtyIdController =
   new FindProfessionalsSpecialtiesBySpecialtyIdController();
+const deleteProfessionalSpecialtyController =
+  new DeleteProfessionalSpecialtyController();
 
 professionalsSpecialtiesRoutes.post(
   '/',
@@ -25,6 +28,11 @@ professionalsSpecialtiesRoutes.get(
 professionalsSpecialtiesRoutes.get(
   '/findBySpecialty/:specialtyId',
   findProfessionalsSpecialtiesBySpecialtyIdController.handle,
+);
+
+professionalsSpecialtiesRoutes.delete(
+  '/:professionalId/:specialtyId',
+  deleteProfessionalSpecialtyController.handle,
 );
 
 export default professionalsSpecialtiesRoutes;
