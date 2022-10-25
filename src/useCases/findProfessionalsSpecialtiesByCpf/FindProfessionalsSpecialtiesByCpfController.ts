@@ -4,14 +4,14 @@ import FindProfessionalsSpecialtiesByCpfUseCase from './FindProfessionalsSpecial
 
 class FindProfessionalsSpecialtiesByCpfController {
   async handle(request: Request, response: Response): Promise<Response> {
-    const { personCpf } = request.params;
+    const { cpf } = request.params;
 
     const findProfessionalsSpecialtiesByCpfUseCase = container.resolve(
       FindProfessionalsSpecialtiesByCpfUseCase,
     );
 
     const professionalsSpecialties =
-      await findProfessionalsSpecialtiesByCpfUseCase.execute(personCpf);
+      await findProfessionalsSpecialtiesByCpfUseCase.execute(cpf);
 
     return response.json(professionalsSpecialties);
   }
