@@ -46,6 +46,38 @@ class PeopleRepository implements IPeopleRepository {
     await this.repository.save(person);
   }
 
+  async update({
+    cpf,
+    name,
+    email,
+    phoneNumber,
+    countryStateId,
+    zipCode,
+    cityId,
+    district,
+    address,
+    complement,
+    userId,
+    user,
+  }: ICreatePeopleDTO): Promise<void> {
+    const person = this.repository.create({
+      cpf,
+      name,
+      email,
+      phoneNumber,
+      countryStateId,
+      zipCode,
+      cityId,
+      district,
+      address,
+      complement,
+      userId,
+      user,
+    });
+
+    await this.repository.save(person);
+  }
+
   async findByCpf(cpf: string): Promise<Person> {
     const person = await this.repository.findOne({ where: { cpf } });
 
