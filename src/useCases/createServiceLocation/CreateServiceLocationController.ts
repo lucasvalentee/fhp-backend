@@ -5,6 +5,7 @@ import CreateServiceLocationUseCase from './CreateServiceLocationUseCase';
 class CreateServiceLocationController {
   async handle(request: Request, response: Response): Promise<Response> {
     const {
+      id,
       countryStateId,
       zipCode,
       cityId,
@@ -13,6 +14,8 @@ class CreateServiceLocationController {
       complement,
       phoneNumber,
       medicalInsurance,
+      paymentMethods,
+      professionalSpecialtyServiceLocation,
     } = request.body;
 
     const createServiceLocationUseCase = container.resolve(
@@ -20,6 +23,7 @@ class CreateServiceLocationController {
     );
 
     const serviceLocation = await createServiceLocationUseCase.execute({
+      id,
       countryStateId,
       zipCode,
       cityId,
@@ -28,6 +32,8 @@ class CreateServiceLocationController {
       complement,
       phoneNumber,
       medicalInsurance,
+      paymentMethods,
+      professionalSpecialtyServiceLocation,
     });
 
     return response.status(201).json(serviceLocation);
