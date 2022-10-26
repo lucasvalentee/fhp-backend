@@ -1,5 +1,13 @@
-import { Column, Entity, JoinColumn, OneToOne, PrimaryColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToMany,
+  OneToOne,
+  PrimaryColumn,
+} from 'typeorm';
 import CountryState from './CountryState';
+import ServiceLocation from './ServiceLocation';
 
 @Entity('cities')
 class City {
@@ -15,6 +23,10 @@ class City {
   @OneToOne(() => CountryState)
   @JoinColumn({ name: 'country_state_id' })
   countryState: CountryState;
+
+  @OneToMany(() => ServiceLocation, serviceLocation => serviceLocation.cityId)
+  @JoinColumn({ name: 'city_id', referencedColumnName: 'cityId' })
+  serviceLocation: ServiceLocation[];
 }
 
 export default City;
