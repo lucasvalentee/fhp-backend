@@ -14,6 +14,8 @@ const findServiceLocattionByIdController =
 const findServiceLocationByProfessionalController =
   new FindServiceLocationByProfessionalController();
 
+const deleteServiceLocationController = new DeleteServiceLocationController();
+
 serviceLocationsRoutes.post('/', createServiceLocationController.handle);
 
 serviceLocationsRoutes.get('/:id', findServiceLocattionByIdController.handle);
@@ -22,5 +24,7 @@ serviceLocationsRoutes.get(
   '/findByProfessional/:professionalId',
   findServiceLocationByProfessionalController.handle,
 );
+
+serviceLocationsRoutes.delete('/:id', deleteServiceLocationController.handle);
 
 export default serviceLocationsRoutes;
