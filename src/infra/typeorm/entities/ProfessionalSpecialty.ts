@@ -45,7 +45,7 @@ class ProfessionalSpecialty {
   @JoinColumn([{ name: 'professional_id', referencedColumnName: 'id' }])
   professional: Professional;
 
-  @ManyToOne(() => Specialty, specialty => specialty.id)
+  @ManyToOne(() => Specialty, specialty => specialty.id, { eager: true })
   @JoinColumn({ name: 'specialty_id', referencedColumnName: 'id' })
   specialty: Specialty;
 

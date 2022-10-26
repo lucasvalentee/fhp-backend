@@ -50,7 +50,10 @@ class ProfessionalSpecialtyServiceLocation {
   ])
   professionalSpecialty: ProfessionalSpecialty;
 
-  @ManyToOne(() => ServiceLocation)
+  @ManyToOne(
+    () => ServiceLocation,
+    serviceLocation => serviceLocation.professionalSpecialtyServiceLocation,
+  )
   @JoinColumn({ name: 'service_location_id', referencedColumnName: 'id' })
   serviceLocation: ServiceLocation;
 
