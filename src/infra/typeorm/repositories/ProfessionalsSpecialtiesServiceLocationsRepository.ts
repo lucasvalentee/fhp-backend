@@ -31,6 +31,14 @@ class ProfessionalsSpecialtiesServiceLocationsRepository
     await this.repository.save(data);
   }
 
+  async deleteByServiceLocation(serviceLocationId: string): Promise<boolean> {
+    const response = await this.repository.delete({
+      serviceLocationId,
+    });
+
+    return !!response.affected;
+  }
+
   async findByCpfAndSpecialty(
     personCpf: string,
     specialtyId: string,
@@ -38,6 +46,19 @@ class ProfessionalsSpecialtiesServiceLocationsRepository
     const professionalsSpecialtiesServiceLocations = await this.repository.find(
       {
         where: { personCpf, specialtyId },
+        relations: ['serviceLocation'],
+      },
+    );
+
+    return professionalsSpecialtiesServiceLocations;
+  }
+
+  async findByProfessional(
+    professionalId: string,
+  ): Promise<ProfessionalSpecialtyServiceLocation[]> {
+    const professionalsSpecialtiesServiceLocations = await this.repository.find(
+      {
+        where: { professionalId },
         relations: ['serviceLocation'],
       },
     );

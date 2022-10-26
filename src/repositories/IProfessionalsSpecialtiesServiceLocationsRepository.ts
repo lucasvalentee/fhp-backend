@@ -14,9 +14,15 @@ interface IProfessionalsSpecialtiesServiceLocationsRepository {
       | ProfessionalSpecialtyServiceLocation[],
   ): Promise<void>;
 
+  deleteByServiceLocation(serviceLocationId: string): Promise<boolean>;
+
   findByCpfAndSpecialty(
     personCpf: string,
     specialtyId: string,
+  ): Promise<ProfessionalSpecialtyServiceLocation[]>;
+
+  findByProfessional(
+    professionalId: string,
   ): Promise<ProfessionalSpecialtyServiceLocation[]>;
 
   isServiceLocationDuplicatedForSpecialty(

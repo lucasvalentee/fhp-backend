@@ -17,6 +17,7 @@ class ServiceLocationsRepository implements IServiceLocationsRepository {
   }
 
   async create({
+    id,
     countryStateId,
     zipCode,
     cityId,
@@ -25,8 +26,10 @@ class ServiceLocationsRepository implements IServiceLocationsRepository {
     complement,
     phoneNumber,
     medicalInsurance,
+    paymentMethods,
   }: ICreateServiceLocationDTO): Promise<ServiceLocation> {
     const serviceLocation = this.repository.create({
+      id,
       countryStateId,
       zipCode,
       cityId,
@@ -35,9 +38,32 @@ class ServiceLocationsRepository implements IServiceLocationsRepository {
       complement,
       phoneNumber,
       medicalInsurance,
+      paymentMethods: JSON.stringify(paymentMethods),
     });
 
     return await this.repository.save(serviceLocation);
+  }
+
+  async delete(id: string): Promise<boolean> {
+    const response = await this.repository.delete({
+      id,
+    });
+
+    return !!response.affected;
+  }
+
+  async findById(id: string): Promise<ServiceLocation> {
+    return await this.repository.findOneBy({ id });
+  }
+
+  async findByProfessional(professionalId: string): Promise<ServiceLocation[]> {
+    return await this.repository.find({
+      where: {
+        professionalSpecialtyServiceLocation: {
+          professionalId,
+        },
+      },
+    });
   }
 }
 
