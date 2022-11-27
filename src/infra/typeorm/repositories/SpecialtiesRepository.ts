@@ -1,6 +1,6 @@
 import DatabaseConfiguration from '@database/DatabaseConfiguration';
 import { ISpecialtiesRepository } from 'repositories/ISpecialtiesRepository';
-import { Repository } from 'typeorm';
+import { ILike, Repository } from 'typeorm';
 import Specialty from '../entities/Specialty';
 
 class SpecialtiesRepository implements ISpecialtiesRepository {
@@ -21,6 +21,14 @@ class SpecialtiesRepository implements ISpecialtiesRepository {
     const specialties = await this.repository.find();
 
     return specialties;
+  }
+
+  async findByName(name: string): Promise<Specialty> {
+    return await this.repository.findOne({
+      where: {
+        description: ILike(`%${name}%`),
+      },
+    });
   }
 }
 
