@@ -3,9 +3,11 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToOne,
   PrimaryColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import Person from './Person';
 import ProfessionalSpecialty from './ProfessionalSpecialty';
 import ServiceLocation from './ServiceLocation';
 import Specialty from './Specialty';
@@ -60,6 +62,10 @@ class ProfessionalSpecialtyServiceLocation {
   @ManyToOne(() => Specialty)
   @JoinColumn({ name: 'specialty_id', referencedColumnName: 'id' })
   specialty: Specialty;
+
+  @ManyToOne(() => Person, { eager: true })
+  @JoinColumn({ name: 'person_cpf', referencedColumnName: 'cpf' })
+  person: Person;
 }
 
 export default ProfessionalSpecialtyServiceLocation;

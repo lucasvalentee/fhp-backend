@@ -65,6 +65,22 @@ class ServiceLocationsRepository implements IServiceLocationsRepository {
       },
     });
   }
+
+  async findByRegionAndSpecialtyId(
+    countryStateId: number,
+    cityId: number,
+    specialtyId: string,
+  ): Promise<ServiceLocation[]> {
+    return await this.repository.find({
+      where: {
+        cityId,
+        countryStateId,
+        professionalSpecialtyServiceLocation: {
+          specialtyId,
+        },
+      },
+    });
+  }
 }
 
 export default ServiceLocationsRepository;

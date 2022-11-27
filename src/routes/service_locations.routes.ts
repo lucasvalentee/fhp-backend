@@ -3,6 +3,7 @@ import CreateServiceLocationController from 'useCases/createServiceLocation/Crea
 import DeleteServiceLocationController from 'useCases/deleteServiceLocation/DeleteServiceLocationController';
 import FindServiceLocattionByIdController from 'useCases/findServiceLocationById/FindServiceLocationByIdController';
 import FindServiceLocationByProfessionalController from 'useCases/findServiceLocationByProfessional/FindServiceLocationByProfessionalController';
+import FindServiceLocationByRegionAndSpecialtyIdController from 'useCases/findServiceLocationByRegionAndSpecialtyId/FindServiceLocationByRegionAndSpecialtyIdController';
 
 const serviceLocationsRoutes = Router();
 
@@ -16,6 +17,9 @@ const findServiceLocationByProfessionalController =
 
 const deleteServiceLocationController = new DeleteServiceLocationController();
 
+const findServiceLocationByRegionAndSpecialtyIdController =
+  new FindServiceLocationByRegionAndSpecialtyIdController();
+
 serviceLocationsRoutes.post('/', createServiceLocationController.handle);
 
 serviceLocationsRoutes.get('/:id', findServiceLocattionByIdController.handle);
@@ -23,6 +27,11 @@ serviceLocationsRoutes.get('/:id', findServiceLocattionByIdController.handle);
 serviceLocationsRoutes.get(
   '/findByProfessional/:professionalId',
   findServiceLocationByProfessionalController.handle,
+);
+
+serviceLocationsRoutes.get(
+  '/findByRegionAndSpecialty/:countryStateId/:cityId/:specialtyId',
+  findServiceLocationByRegionAndSpecialtyIdController.handle,
 );
 
 serviceLocationsRoutes.delete('/:id', deleteServiceLocationController.handle);

@@ -34,6 +34,12 @@ interface IServiceLocationsRepository {
   findById(id: string): Promise<ServiceLocation>;
 
   findByProfessional(professionalId: string): Promise<ServiceLocation[]>;
+
+  findByRegionAndSpecialtyId(
+    countryStateId: number,
+    cityId: number,
+    specialtyId: string,
+  ): Promise<ServiceLocation[]>;
 }
 
 export { IServiceLocationsRepository, ICreateServiceLocationDTO };
